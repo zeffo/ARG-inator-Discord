@@ -32,8 +32,8 @@ class CipherEncode(commands.Cog):
             e.add_field(name="Morse Code (mc)", value='>encode morse <text>')
             e.add_field(name="Octal (oct)", value='>encode oct <text>')
             e.add_field(name="Rot47 (r47)", value='>encode rot47 <text>')
-            e.add_field(name="Monoalphabetic Substitution (mono)", value='>encode mono <text>')
-            e.add_field(name="Vigenere (v)", value=">encode v <"text"> <"key">")
+            e.add_field(name="Monoalphabetic Substitution (mono)", value='>encode mono <"text"> <"key">')
+            e.add_field(name="Vigenère (v)", value=">encode v <"text"> <"key">")
             await ctx.send(embed=e)
         else:
             pass
