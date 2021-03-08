@@ -8,6 +8,23 @@ class OtherTools(commands.Cog):
     def __init__(self, client):
         self.client = client
 
+    @commands.command(aliases=['h'])
+    async def help(self,ctx):
+        e = discord.Embed(title="ARG-inator's help desk")
+        e.add_field(name='Decode', value='`>decode` or `>d`')
+        e.add_field(name='Encode', value='`>encode` or `>e`')
+        e.add_field(name='Others', value='`>other` or `>misc` or `o`')
+        await ctx.send(embed=e)
+
+    @commands.command(aliases=['o'])
+    async def other(self, ctx):
+        e = discord.Embed(title="Other command")
+        e.add_field(name='Frequency', value='Calculates the frequency of the given text\n`>freq <text>`')
+        e.add_field(name='Bi-gram', value='Calculates the Bi-gram of the given text\n`>bi <text>`')
+        e.add_field(name='Tri-gram', value='Calculates the Tri-gram of the given text\n`>tri <text>`')
+        e.add_field(name='Index of Coincidence',value='Calculates the Index of Coincidence of a given text\n`>ioc <text>`')
+        await ctx.send(embed=e)
+
     @commands.command(aliases=['freq'])
     async def frequency_test(self, ctx, *, text):
         text = ''.join([s for s in text if s.isalpha()]).lower()
@@ -20,7 +37,7 @@ class OtherTools(commands.Cog):
         e.set_footer(text=f"Requested by: {ctx.author}")
         await ctx.send(embed=e)
 
-    @commands.command()
+    @commands.command(aliases=['bi'])
     async def bigram(self,ctx,*,text):
         text = ''.join([s for s in text if s.isalpha()]).lower()
         bgram = dict(Counter(text[x:x+2] for x in range(len(text) - 1)))
@@ -32,7 +49,7 @@ class OtherTools(commands.Cog):
         e.set_footer(text=f"Requested by: {ctx.author}")
         await ctx.send(embed=e)
 
-    @commands.command()
+    @commands.command(aliases=['tri'])
     async def trigram(self, ctx, *, text):
         text = ''.join([s for s in text if s.isalpha()]).lower()
         bgram = dict(Counter(text[x:x + 3] for x in range(len(text) - 1)))
